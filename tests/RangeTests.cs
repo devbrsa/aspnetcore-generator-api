@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using api.Controllers;
 using Xunit;
+using Range = api.Controllers.Range;
 
 namespace tests
 {
@@ -16,7 +17,7 @@ namespace tests
 
             Assert.Equal(3, generated.Count());
         }
-        
+
         [Fact]
         public void SortShouldOrderResults()
         {
