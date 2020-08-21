@@ -1,21 +1,23 @@
-version: '3.1'
+version: '3.8'
 
 services:
     teamcity:
-        image: jetbrains/teamcity-server:2017.1.2
+        image: jetbrains/teamcity-server:latest
         volumes:
             - teamcity-server-datadir:/data/teamcity_server/datadir
             - teamcity-server-logs:/opt/teamcity/logs
         ports:
             - 8111:8111
     teamcity-agent:
-        image: aspnetcore/teamcity-agent-with-compose:2017.1.2
-        build: ./agent
+        # image: jetbrains/teamcity-agent:2019.2.4-linux
+        image: jetbrains/teamcity-agent:latest
+        #build: ./agent
         environment:
             SERVER_URL: http://teamcity:8111
+            DOCKER_IN_DOCKER: start
+        privileged: true
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
-
 
 volumes:
     teamcity-server-datadir:
