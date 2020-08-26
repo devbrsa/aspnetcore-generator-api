@@ -1,16 +1,14 @@
-version: '3.1'
+version: '3.8'
 
 services:
-  generator:
-    image: my-registry:55000/gen:ci-${GENERATOR_BUILD_NUMBER-10}
-    #ports:
-    #  - "8080:80"
-  mail:
-    image: mailhog/mailhog
-    #ports:
-    #  - "8025:8025"
-  integration:
-    image: my-registry:55000/gen:integration-${BUILD_NUMBER-10}
-    build: .
-    environment:
-      - TEAMCITY_PROJECT_NAME
+    generator:
+        image: localhost:55000/gen:ci-11
+        # ports:
+        #     - "8080:80"
+    mail:
+        image: mailhog/mailhog
+        # ports:
+        #     - "8025:8025"
+    integration:
+        # image: localhost:55000/gen:integration-11
+        build: .
